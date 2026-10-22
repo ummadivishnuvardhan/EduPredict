@@ -1,0 +1,87 @@
+{
+  "dataset": "UCI Student Performance (Mathematics)",
+  "rows": 395,
+  "split": "80/20 random train/test; random_state=42",
+  "target": "G3",
+  "early": {
+    "selected_model": "RandomForestRegressor",
+    "selection_cv_mae": {
+      "LinearRegression": 2.040504383588149,
+      "RandomForestRegressor": 1.715219904647546
+    },
+    "features": [
+      "G1",
+      "studytime",
+      "absences",
+      "failures",
+      "schoolsup",
+      "famsup",
+      "paid",
+      "activities",
+      "nursery",
+      "higher",
+      "internet",
+      "traveltime"
+    ],
+    "rows_train": 316,
+    "rows_test": 79,
+    "metrics": {
+      "DummyRegressor": {
+        "mae": 3.64585002403461,
+        "rmse": 4.550180652162387,
+        "r2": -0.009709643515769084
+      },
+      "LinearRegression": {
+        "mae": 2.1260210810634015,
+        "rmse": 2.757788134604356,
+        "r2": 0.6290964221667998
+      },
+      "RandomForestRegressor": {
+        "mae": 1.6157630098452886,
+        "rmse": 2.2677968379853595,
+        "r2": 0.749188459253844
+      }
+    }
+  },
+  "late": {
+    "selected_model": "RandomForestRegressor",
+    "selection_cv_mae": {
+      "LinearRegression": 1.1908386669788993,
+      "RandomForestRegressor": 0.9467939077117398
+    },
+    "features": [
+      "G1",
+      "G2",
+      "studytime",
+      "absences",
+      "failures",
+      "schoolsup",
+      "famsup",
+      "paid",
+      "activities",
+      "nursery",
+      "higher",
+      "internet",
+      "traveltime"
+    ],
+    "rows_train": 316,
+    "rows_test": 79,
+    "metrics": {
+      "DummyRegressor": {
+        "mae": 3.64585002403461,
+        "rmse": 4.550180652162387,
+        "r2": -0.009709643515769084
+      },
+      "LinearRegression": {
+        "mae": 1.4339227438220628,
+        "rmse": 2.205333941459211,
+        "r2": 0.762814602191808
+      },
+      "RandomForestRegressor": {
+        "mae": 1.1651819353876316,
+        "rmse": 1.9022416996578682,
+        "r2": 0.8235301076553654
+      }
+    }
+  }
+}

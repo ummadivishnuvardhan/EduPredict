@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+pytest-cache-files-*/
+.tmp/
+*.py[cod]
+.streamlit/secrets.toml
+data/uci-download/
+data/uci-files/
+data/student-performance.zip
