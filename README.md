@@ -2,6 +2,8 @@
 
 EduPredict is a beginner-friendly Streamlit prototype that estimates final mathematics grades and offers a configurable teacher-review prompt. It uses the real UCI Student Performance mathematics data (`data/student-mat.csv`). It does not estimate a probability of failure.
 
+**Live app:** [edupredict-uvv-2026.streamlit.app](https://edupredict-uvv-2026.streamlit.app/)
+
 ## Prediction stages
 
 - **Earlier stage:** excludes G2 and G3, using G1 plus selected study, attendance, and support indicators.
@@ -35,25 +37,11 @@ Tests cover dataset loading, training/inference, prediction range handling, thre
 
 Each stage uses a reproducible 80/20 random train/test split (`random_state=42`), appropriate because records do not form a time series. A random split still does not measure transfer to another school or year. DummyRegressor, LinearRegression, and RandomForestRegressor are compared using held-out MAE, RMSE, and R². Five-fold cross-validation on the training partition selects between the two learned models; the held-out test partition is reserved for final reporting. Metrics are not claims of real-world validation.
 
-## Deploy to Streamlit Community Cloud
+## Deployment
 
-Create an empty GitHub repository first, then from this project directory:
+The app is deployed on Streamlit Community Cloud from the public GitHub repository [ummadivishnuvardhan/EduPredict](https://github.com/ummadivishnuvardhan/EduPredict). It uses Python 3.12 and `app.py` as its entry point. Changes pushed to the repository are picked up by Streamlit Community Cloud.
 
-```powershell
-git init -b main
-git add .gitignore README.md requirements.txt app.py src tests data/README.md data/student-mat.csv models/early.joblib models/late.joblib models/evaluation.json models/early-holdout.csv models/late-holdout.csv
-git status --short
-git diff --cached --check
-git commit -m "Build EduPredict student performance app"
-git remote add origin https://github.com/YOUR-ACCOUNT/YOUR-REPOSITORY.git
-git push -u origin main
-```
-
-Before `git push`, inspect the staged file list and confirm it contains no secrets or identifying student data. The listed model and evaluation artifacts are needed at app startup and are not ignored by `.gitignore`.
-
-In Streamlit Community Cloud, create an app from that repository, choose `app.py` as the entry point, and use Python 3.12 (the current Community Cloud default) or select another supported version in advanced settings. Deploy and verify the Home, individual prediction, and batch prediction views.
-
-No deployment has been performed by this project setup. Do not commit identifying student data, secrets, virtual environments, or caches.
+Do not commit identifying student data, secrets, virtual environments, or caches. Uploaded CSV records are processed in memory; do not include student names, IDs, or other identifying data.
 
 ## Data attribution and limitations
 
